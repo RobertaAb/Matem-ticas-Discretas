@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+#coding: utf-8
+
+'''
+ MATEMÁTICAS DISCRETAS
+ Ejercicio: De una base 10 a otra base.
+ * Nombre: Viviana Marcela Peña Márquez. 
+ * Programa: Matemáticas.
+ * Fecha: Martes, 7 de abril de 2015.
+ * Institución: Konrad Lorenz Fundación Universitaria.
+ * Profesor: Óscar Gómez.
+'''
+
+import numpy as np
+import math
+
+n = input("Dígite un número en base 10 (cádena) n: ")
+b = input("¿A qué base quiere pasarlo?: ")
+
+answer=[]
+
+while(n>0):
+	answer.append(n%b)
+	n=n/b
+	
+answer=answer[::-1]
+
+s=''
+
+for i in range (0,len(answer)):
+	if(answer[i]>9):
+		s=s+chr(55+answer[i])
+	else: 
+		s=s+chr(48+answer[i])
+	
+#print answer
+#print ''
+print s
