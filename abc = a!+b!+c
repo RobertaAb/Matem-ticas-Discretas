@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+#coding: utf-8
+
+'''
+
+ MATEMÁTICAS DISCRETAS
+ Ejercicio: abc = a!+b!+c!
+ * Nombre: Viviana Marcela Peña Márquez. 
+ * Programa: Matemáticas.
+ * Fecha: Martes, 10 de febrero de 2015.
+ * Institución: Konrad Lorenz Fundación Universitaria.
+ * Profesor: Óscar Gómez.
+
+'''
+
+import numpy as np
+import math
+
+for i in range(100,1000):
+	s = str(i)
+	fact = math.factorial(int(s[0]))+math.factorial(int(s[1]))+math.factorial(int(s[2]))
+	if(i==fact):
+		print i
