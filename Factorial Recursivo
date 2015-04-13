@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+#coding: utf-8
+
+'''
+
+ MATEMÁTICAS DISCRETAS
+ Ejercicio: Factorial Recursivo
+ * Nombre: Viviana Marcela Peña Márquez. 
+ * Programa: Matemáticas.
+ * Fecha: Martes, 24 de febrero de 2015.
+ * Institución: Konrad Lorenz Fundación Universitaria.
+ * Profesor: Óscar Gómez.
+
+'''
+
+def factrec(n):
+	if(n==0):
+		return 1
+
+	else:	
+		return n*factrec(n-1)
+		
+num = int(input("Enter a number: "))
+
+print factrec(num)
