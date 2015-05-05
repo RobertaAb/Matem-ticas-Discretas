@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+#coding: utf-8
+
+'''
+ MATEMÁTICAS DISCRETAS
+ Ejercicio: Conjetura de Goldbach.
+ * Nombre: Viviana Marcela Peña Márquez. 
+ * Programa: Matemáticas.
+ * Fecha: Martes, 28 de abril de 2015.
+ * Institución: Konrad Lorenz Fundación Universitaria.
+ * Profesor: Óscar Gómez.
+'''
+
+import numpy as np 
+
+n = input("Dígite el número = ")
+
+A = range(0,n+1)
+
+for i in range (2,(int(np.sqrt(n))+1)):
+	for j in range (2,(int(n/i)+1)):
+		A[i*j]=0
+#print A
+#Parte 2
+
+s=0
+A[1]=0
+B=np.zeros(n)
+
+for k in range (2,n+1):
+	if(A[k]!=0):
+		B[s]=A[k]
+		#B.append(A[k])
+		s=s+1
+		
+#print B
+#print "Los primos que hay son:",
+#print len(B)
+
+for l in range (4,n+2,2):
+	for z in range (0,s+1):
+		if(A[int(l-B[z])]!=0):
+			print l,"=",B[z],"+",l-B[z]
