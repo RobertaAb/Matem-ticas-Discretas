@@ -1,0 +1,112 @@
+#!/usr/bin/env python
+#coding: utf-8
+
+'''
+ MATEMÁTICAS DISCRETAS
+ Parcial Final : Punto de programación
+ Combinación Lineal - Ecuación Diofántica.
+ * Nombre: Viviana Marcela Peña Márquez. 
+ * Programa: Matemáticas.
+ * Fecha: Martes, 19 de mayo de 2015.
+ * Institución: Konrad Lorenz Fundación Universitaria.
+ * Profesor: Óscar Gómez.
+'''
+
+#print ""
+a = input("Número mayor = ")
+b = input("Número menor = ")
+
+ac = a
+bc = b
+
+r = 1 
+
+array1 = []
+
+while (r>0):
+	array2 = []
+	r=a%b
+	array2.append(r) #guarda el residuo
+	array2.append(a) #guarda a
+	array2.append(b) #guarda b
+	array2.append(a/b) #guarda quotient
+	a=b
+	b=r	
+	array1.append(array2)
+
+array1.pop() #borra el último (cuándo el residuo es cero)	
+superarray=array1.pop() #borra el último, pero también lo asigna.	
+array1.reverse()
+mcd = superarray.pop(0) #borra el primer elemento y guarda el mcd
+
+#print array1
+#print superarray
+
+#El máximo común divisor
+print ""
+print "El mcd (",ac,",",bc,") es:",mcd
+print ""
+
+#Múltiplica las veces que haya el quotient.
+times = superarray.pop()
+x=superarray.pop()
+
+for i in range (0,times):
+	superarray.append(x*-1)
+		
+#print superarray
+
+#Múltiplica las veces que haya el quotient.
+for i in range (0,len(array1)):
+	times=array1[i].pop()
+	x=array1[i].pop()
+	for j in range (0,times):
+		array1[i].append(x*-1)
+
+#print array1
+
+for i in range (0,len(array1)):
+	for j in range (0,len(superarray)):
+		if(superarray[j]==array1[i][0]):
+			#superarray.pop(j) #Inicialmente quería borrar el valor, pero modificaba el rango.
+			superarray[j]= ':)' # Así que lo remplace por un auxiliar (carita feliz).
+			for k in range (1,len(array1[i])):
+				superarray.append(array1[i][k])
+		if((superarray[j]*-1)==array1[i][0]):
+			#superarray.pop(j)
+			superarray[j]= ':)'
+			for k in range (1,len(array1[i])):
+				superarray.append((array1[i][k])*-1)
+
+#print superarray
+
+superarray[:] = [x for x in superarray if x != ':)'] # Remueve todos los auxiliares
+
+#print superarray
+
+contac = 0
+contbc = 0
+
+for i in range (0,len(superarray)):
+	if(superarray[i]==ac):
+		contac = contac + 1
+	if(superarray[i]==(ac*-1)):
+		contac = contac - 1 
+	if(superarray[i]==bc):
+		contbc = contbc + 1
+	if(superarray[i]==(bc*-1)):
+		contbc = contbc - 1 
+
+#print contac
+#print contbc
+
+print "La ecuación diofántica es: "
+print mcd,"=",ac,"( x ) +",bc,"( y )"
+print mcd,"=",ac,"(",contac,") +",bc,"(",contbc,")"
+print ""
+
+
+
+
+
+
